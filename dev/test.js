@@ -29,6 +29,8 @@ const currentBlockData = [
 const previousBlockHash = "JKBVFYEER8T7V8VGEGV";
 const nonce = 89787;
 
+console.log(bitCoin.proofOfWork(previousBlockHash, currentBlockData));
+
 console.log(bitCoin.hashBlock(previousBlockHash, currentBlockData, nonce));
 
 // console.log(bitCoin.chain[0]);

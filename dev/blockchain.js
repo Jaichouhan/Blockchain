@@ -54,7 +54,11 @@ Blockchain.prototype.hashBlock = function (
   currentBlockData,
   nonce
 ) {
+  const dataAsString =
+    previousBlockHash + nonce.toString() + JSON.stringify(currentBlockData);
   // return 8745986798564KDFJB8U434UUIRURY9028938
+  const hash = sha256(dataAsString);
+  return hash;
 };
 
 module.exports = Blockchain;

@@ -61,4 +61,6 @@ Blockchain.prototype.hashBlock = function (
   return hash;
 };
 
+Blockchain.prototype.proofOfWork = (previousBlockHash, currentBlockData) => {};
+
 module.exports = Blockchain;

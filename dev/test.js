@@ -9,6 +9,7 @@ bitCoin.createNewTranscation(500, "JAI88938BJKBJ", "MAHAK8367JNJKBF");
 bitCoin.createNewTranscation(400, "JAI88938BJKBJ", "MAHAK8367JNJKBF");
 bitCoin.createNewBlock(0304, "MJ0304", "JANAK");
 
+const previousBlockHash = "JKBVFYEER8T7V8VGEGV";
 const currentBlockData = [
   {
     nonce: 2701,
@@ -26,11 +27,11 @@ const currentBlockData = [
     previousBlockHash: "VJHFHBGI67352G",
   },
 ];
-const previousBlockHash = "JKBVFYEER8T7V8VGEGV";
 const nonce = 89787;
 
-console.log(bitCoin.proofOfWork(previousBlockHash, currentBlockData));
+// console.log(bitCoin.proofOfWork(previousBlockHash, currentBlockData));
 
 console.log(bitCoin.hashBlock(previousBlockHash, currentBlockData, nonce));
+// console.log(bitCoin.proofOfWork(previousBlockHash, currentBlockData));
 
 // console.log(bitCoin.chain[0]);

@@ -3,7 +3,11 @@ const app = express();
 const bodyParser = require("body-parser");
 const Blockchain = require("./blockchain");
 const bitcoin = new Blockchain();
+const uuid = require("uuid").v4;
 
+const newAddress = uuid();
+// .split("-").json("");
+console.log(newAddress, "newAddress");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -35,6 +39,8 @@ app.get("/mine", (req, res) => {
     currentBlockData,
     nonce
   );
+
+  const transactions = bitcoin.createNewTranscation(12.5, "00", newAddress);
 
   const newBlock = bitcoin.createNewBlock(nonce, previousBlockHash, blockHash);
 

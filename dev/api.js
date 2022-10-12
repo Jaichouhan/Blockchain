@@ -21,7 +21,28 @@ app.post("/transction", (req, res) => {
     note: `Transaction will be added in block ${blockIndex}`,
   });
 });
-app.get("/mine", (req, res) => {});
+app.get("/mine", (req, res) => {
+  const lastBlock = bitcoin.getLastBlock();
+  const previousBlockHash = lastBlock["hash"];
+  const currentBlockData = {
+    transation: bitcoin.pendingTransaction,
+    index: lastBlock["index"] + 1,
+  };
+
+  const nonce = bitcoin.proofOfWork(previousBlockHash, currentBlockData);
+  const blockHash = bitcoin.hashBlock(
+    previousBlockHash,
+    currentBlockData,
+    nonce
+  );
+
+  const newBlock = bitcoin.createNewBlock(nonce, previousBlockHash, blockHash);
+
+  res.json({
+    note: "new block mined successfully",
+    block: newBlock,
+  });
+});
 
 app.listen(8000, () => {
   console.log("started");

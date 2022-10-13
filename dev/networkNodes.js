@@ -5,10 +5,9 @@ const Blockchain = require("./blockchain");
 const bitcoin = new Blockchain();
 const uuid = require("uuid").v4;
 const port = process.argv[2];
+const portConnection = process.argv[3];
 
 const newAddress = uuid();
-// .split("-").json("");
-console.log(newAddress, "newAddress");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -51,6 +50,14 @@ app.get("/mine", (req, res) => {
   });
 });
 
+app.post("/register-and-boradcast-node", (req, res) => {
+  const newNodeUrl = req.body.newNodeUrl;
+});
+
+app.post("/register-node", () => {});
+
+app.post("/register-nodes-bulk", () => {});
+
 app.listen(port, () => {
-  console.log("started", port);
+  console.log("started", portConnection);
 });
